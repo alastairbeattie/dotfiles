@@ -4,3 +4,6 @@ export npm_config_prefix=~/.node_modules
 
 # path for pip --user libraries
 PATH="$HOME/.local/bin:$PATH"
+
+# path for pip --user libraries
+PATH="$HOME/bin:$PATH"

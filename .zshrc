@@ -1,18 +1,14 @@
-
-
 # allow per-user 'global' npm installs
 
-# path for node modules
-PATH="$HOME/.node_modules/bin:$PATH"
-export npm_config_prefix=~/.node_modules
-
-# path for pip --user libraries
-PATH="$HOME/.local/bin:$PATH"
 #xcape -e 'Control_L=Escape'
 
 #### ALIASES ####
 # alias for dotfiles repository
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+abe_cpu_frequency() {
+    sudo cpupower frequency-info -fm | egrep -o "[0-9i,\.]{3,5} [GM]Hz"
+}
 
 prompt_git_detail() {
     if [ -d .git ]; then
@@ -27,6 +23,7 @@ prompt_git_detail() {
 
 autoload -Uz compinit
 compinit
+
 if [ -z "$SSH_CONNECTION" ]; then
     export PS1="%F{28}%n%F{237}@%F{22}%m %F{25}%~%f %F{100}[%h] %f%# "
 else
@@ -45,8 +42,8 @@ bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-ndbackward
+bindkey '^K' kill-line #maybe turn on if required 
 
-#bindkey '^K' kill-line #maybe turn on if required 
 function zle-line-init zle-keymap-select {
     VIM_PROMPT="%{$fg_bold[yellow]%} %F{39} [% NORMAL]%  %{$reset_color%}"
     RPS1="%F{238}%c${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} %F{16}$(prompt_git_detail)$EPS1"
@@ -87,3 +84,6 @@ man() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
