@@ -143,7 +143,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 new_window 1pixel
-focus_follows_mouse no
+focus_follows_mouse yes
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -159,7 +159,7 @@ bindsym $mod+Control+j resize shrink height 1 px or 1 ppt
 bindsym $mod+Control+l resize grow width 1 px or 1 ppt
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
+mode "resize " {
     # These bindings trigger as soon as you enter the resize mode
 
     # Pressing left will shrink the window’s width.
@@ -219,7 +219,7 @@ mode "swap" {
 }
 bindsym $mod+Shift+s mark --add "swapee"; mode "swap"
 
-mode "insert" {
+mode "insert-hsplit" {
     # switch to workspace
     # hide_edge_borders none
     bindsym $mod+1 workspace $ws1
@@ -244,14 +244,79 @@ mode "insert" {
     bindsym $mod+k border pixel 1; focus up; border pixel 5
     bindsym $mod+l border pixel 1; focus right; border pixel 5
 
+    bindsym t mode "insert-tab"
+    bindsym i mode "insert-vsplit"
+
     bindsym Return split v; mark --add "target"; [con_mark="insertee"] focus; move container to mark "target"; [con_mark="insertee"] focus; unmark "target"; unmark "insertee"; mode "default";
     bindsym Escape border pixel 1;  unmark "insertee"; mode "default"
 }
-bindsym $mod+Shift+i mark --add "insertee"; mode "insert";
+mode "insert-vsplit" {
+    # switch to workspace
+    # hide_edge_borders none
+    bindsym $mod+1 workspace $ws1
+    bindsym $mod+2 workspace $ws2
+    bindsym $mod+3 workspace $ws3
+    bindsym $mod+4 workspace $ws4
+    bindsym $mod+5 workspace $ws5
+    bindsym $mod+6 workspace $ws6
+    bindsym $mod+7 workspace $ws7
+    bindsym $mod+8 workspace $ws8
+    bindsym $mod+9 workspace $ws9
+    bindsym $mod+0 workspace $ws10
+    # focus the parent container
+    bindsym $mod+a border pixel 1; focus parent; border pixel 5
+
+    # focus the child container
+    bindsym $mod+z border pixel 1; focus child; border pixel 5
+
+    # change focus
+    bindsym $mod+h border pixel 1; focus left; border pixel 5
+    bindsym $mod+j border pixel 1; focus down; border pixel 5
+    bindsym $mod+k border pixel 1; focus up; border pixel 5
+    bindsym $mod+l border pixel 1; focus right; border pixel 5
+
+    bindsym t mode "insert-tab"
+    bindsym i mode "insert-hsplit"
+
+    bindsym Return split v; mark --add "target"; [con_mark="insertee"] focus; move container to mark "target"; [con_mark="insertee"] focus; unmark "target"; unmark "insertee"; mode "default";
+    bindsym Escape border pixel 1;  unmark "insertee"; mode "default"
+}
+mode "insert-tab" {
+    # switch to workspace
+    # hide_edge_borders none
+    bindsym $mod+1 workspace $ws1
+    bindsym $mod+2 workspace $ws2
+    bindsym $mod+3 workspace $ws3
+    bindsym $mod+4 workspace $ws4
+    bindsym $mod+5 workspace $ws5
+    bindsym $mod+6 workspace $ws6
+    bindsym $mod+7 workspace $ws7
+    bindsym $mod+8 workspace $ws8
+    bindsym $mod+9 workspace $ws9
+    bindsym $mod+0 workspace $ws10
+    # focus the parent container
+    bindsym $mod+a border pixel 1; focus parent; border pixel 5
+
+    # focus the child container
+    bindsym $mod+z border pixel 1; focus child; border pixel 5
+
+    # change focus
+    bindsym $mod+h border pixel 1; focus left; border pixel 5
+    bindsym $mod+j border pixel 1; focus down; border pixel 5
+    bindsym $mod+k border pixel 1; focus up; border pixel 5
+    bindsym $mod+l border pixel 1; focus right; border pixel 5
+
+    bindsym i mode "insert-vsplit"
+
+    bindsym Return split v; mark --add "target"; [con_mark="insertee"] focus; layout tabbed; move container to mark "target"; [con_mark="insertee"] focus; unmark "target"; unmark "insertee"; mode "default";
+    bindsym Escape border pixel 1;  unmark "insertee"; mode "default"
+}
+
+bindsym $mod+Shift+i border pixel 5; mark --add "insertee"; mode "insert-hsplit";
 
 # Printscreen function
-bindsym Mod1+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f' --release
-bindsym Ctrl+Print exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
+bindsym $mod+p exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+bindsym $mod+Ctrl+P exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
