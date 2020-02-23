@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/alastair/magi/caspar/caspar'
+let g:netrw_dirhist_2='/Users/alastair/magi/caspar/hp'
+let g:netrw_dirhist_3='/Users/alastair/magi/caspar/caspar'
+let g:netrw_dirhist_4='/Users/alastair/magi/caspar/hp'
+let g:netrw_dirhist_5='/Users/alastair/magi/caspar/hp/selenium'
+let g:netrw_dirhist_6='/Users/alastair/tmp/angular-unit-testing'
+let g:netrw_dirhist_7='/Users/alastair/cnsx/web/src/gsxapi/apiv107'
+let g:netrw_dirhist_8='/Users/alastair/cnsx/web/src/gsxapi/apiv107/authenticate'
+let g:netrw_dirhist_9='/Users/alastair/cnsx/web/src/gsxapi/lib'
