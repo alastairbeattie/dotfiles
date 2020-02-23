@@ -158,6 +158,7 @@ bindsym $mod+Control+k resize grow height 1 px or 1 ppt
 bindsym $mod+Control+j resize shrink height 1 px or 1 ppt
 bindsym $mod+Control+l resize grow width 1 px or 1 ppt
 
+
 # resize window (you can also use the mouse for that)
 mode "resize " {
     # These bindings trigger as soon as you enter the resize mode
@@ -325,6 +326,10 @@ bindsym $mod+Ctrl+P exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 #        tray_output primary
 #}
 bar {
+        i3bar_command i3bar --transparency
         status_command i3status
         tray_output primary
+        colors {
+                background #1e1e1e00
+        }
 }
