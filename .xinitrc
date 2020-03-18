@@ -34,5 +34,5 @@ fi
 
 xss-lock slimlock &
 compton &
-feh --bg-fill Downloads/bg23.jpg
+feh --bg-fill .config/background.jpg
 i3
