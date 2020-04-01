@@ -85,7 +85,11 @@ bindsym $mod+s layout toggle split
 
 #show marks in decorations
 show_marks yes
+bindsym $mod+Alt+1 mark 1
+bindsym $mod+Alt+2 mark 2
 
+bindsym $mod+Control+1 [con_mark="1"] focus
+bindsym $mod+Control+2 [con_mark="2"] focus
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+Shift+p sticky toggle
@@ -185,6 +189,13 @@ mode "resize " {
 
 bindsym $mod+r mode "resize"
 
+# gaps
+smart_gaps on
+gaps inner 20
+gaps outer 0
+bindsym $mod+i gaps inner current plus 5
+bindsym $mod+o gaps inner current minus 5
+# /gaps
 mode "swap" {
 	# switch to workspace
 	bindsym $mod+1 workspace $ws1
