@@ -10,6 +10,9 @@ abe_cpu_frequency() {
     sudo cpupower frequency-info -fm | egrep -o "[0-9i,\.]{3,5} [GM]Hz"
 }
 
+vpnup() {
+    ~/vpnup.sh start
+}
 prompt_git_detail() {
     if [ -d .git ]; then
         local TRACKED=$(( $(git status -s |grep '^A' -c) + $(git status -s |grep '^M' -c) ))
@@ -23,12 +26,15 @@ prompt_git_detail() {
 
 autoload -Uz compinit
 compinit
-
-if [ -z "$SSH_CONNECTION" ]; then
+if [ "$USER" = "root" ]; then
+    echo bang
+    export PS1="%F{160}%n%F{237}@%F{22}%m %F{25}%~%f %F{100}[%h] %f%# "
+elif [ -z "$SSH_CONNECTION" ]; then
     export PS1="%F{28}%n%F{237}@%F{22}%m %F{25}%~%f %F{100}[%h] %f%# "
 else
     export PS1="%F{97}%n%F{237}@%F{22}%m %F{25}%~%f %F{100}[%h] %f%# "
 fi
+
 bindkey -v # Enable vi mode
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
@@ -43,11 +49,21 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-ndbackward
 bindkey '^K' kill-line #maybe turn on if required 
-
+export PS1_USER_COLOR=97
 function zle-line-init zle-keymap-select {
     VIM_PROMPT="%{$fg_bold[yellow]%} %F{39} [% NORMAL]%  %{$reset_color%}"
     RPS1="%F{238}%c${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} %F{16}$(prompt_git_detail)$EPS1"
     zle reset-prompt
+    if [ "$USER" = "root" ]; then
+        PS1="%F{160}%n%F{237}@%F{22}%m %F{25}%~%f %F{100}[%h] %f%# "
+        PS1_USER_COLOR=160
+    elif [ -z "$SSH_CONNECTION" ]; then
+        PS1="%F{28}%n%F{237}@%F{22}%m %F{25}%~%f %F{100}[%h] %f%# "
+        PS1_USER_COLOR=28
+    else
+        PS1="%F{97}%n%F{237}@%F{22}%m %F{25}%~%f %F{100}[%h] %f%# "
+        PS1_USER_COLOR=97
+    fi
 }
 
 zle -N zle-line-init
@@ -63,6 +79,7 @@ alias dh='dirs -v'
 #colouring
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
+alias pacman='pacman --color auto'
 alias ip='ip -c'
 alias ls='ls --color=auto'
 export LESS=-R
