@@ -56,6 +56,8 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
+vnoremap <C-c> "+y
+
 " Disable Arrow keys in Insert mode
 imap <up> <nop>
 imap <down> <nop>

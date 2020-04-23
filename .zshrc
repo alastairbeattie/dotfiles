@@ -29,6 +29,7 @@ compinit
 if [ "$USER" = "root" ]; then
     echo bang
     export PS1="%F{160}%n%F{237}@%F{22}%m %F{25}%~%f %F{100}[%h] %f%# "
+
 elif [ -z "$SSH_CONNECTION" ]; then
     export PS1="%F{28}%n%F{237}@%F{22}%m %F{25}%~%f %F{100}[%h] %f%# "
 else
@@ -82,6 +83,10 @@ alias grep='grep --color=auto'
 alias pacman='pacman --color auto'
 alias ip='ip -c'
 alias ls='ls --color=auto'
+alias restart='sudo systemctl restart'
+alias stop='sudo systemctl stop'
+alias start='sudo systemctl start'
+alias df='df -H'
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
 export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
