@@ -23,6 +23,7 @@ Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'elixir-editors/vim-elixir'
+Plug 'vimwiki/vimwiki' 
 Plug 'elmcast/elm-vim'
 call plug#end()
 """ VIM PLUG config   
