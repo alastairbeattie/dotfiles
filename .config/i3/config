@@ -43,6 +43,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec termite
 bindsym $mod+Shift+Return exec firefox
+bindsym $mod+Control+Return exec ssh -X magi firefox -no-remote -no-xshm
 # focus child
 
 bindsym $mod+Shift+q kill
@@ -62,10 +63,11 @@ bindsym $mod+space exec dmenu_run -i
 # bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
+bindsym $mod+$left [class=".*"] border pixel 0; focus left; border pixel 5
+bindsym $mod+$down [class=".*"] border pixel 0; focus down; border pixel 5
+bindsym $mod+$up [class=".*"] border pixel 0; focus up; border pixel 5
+bindsym $mod+$right [class=".*"] border pixel 0; focus right; border pixel 5
+
 
 # move focused window
 bindsym $mod+Shift+$left move left
@@ -97,8 +99,12 @@ bindsym $mod+Alt+2 mark 2
 
 bindsym $mod+Control+1 [con_mark="1"] focus
 bindsym $mod+Control+2 [con_mark="2"] focus
+
+# Clear borders
+bindsym $mod+b [class=".*"] border pixel 0
+
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle; sticky toggle
 bindsym $mod+Shift+p sticky toggle
 # change focus between tiling / floating windows
 bindsym Mod1+space focus mode_toggle

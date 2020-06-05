@@ -38,9 +38,11 @@ fi
 
 bindkey -v # Enable vi mode
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=100000
+SAVEHIST=100
 setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_all_dups
 bindkey '^a' vi-beginning-of-line
 bindkey '^e' vi-end-of-line
 bindkey '^P' up-history
