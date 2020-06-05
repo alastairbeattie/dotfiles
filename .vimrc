@@ -33,6 +33,10 @@ let g:elm_format_autosave = 1
 " Change cursor shape between insert and normal mode in iTerm2.app
 let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
 let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
 set nocompatible              " be iMproved, required
 filetype on
 colorscheme alastair
@@ -97,6 +101,7 @@ nnoremap <leader>z :FZF<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>a :Ag<CR>
 nnoremap <leader>l :BLines<CR> " search lines in current buffer
+nnoremap <leader>pn :ALENext<CR>
 " number autoswitching
 :set number relativenumber
 :augroup numbertoggle

@@ -338,7 +338,8 @@ mode "insert-tab" {
 bindsym $mod+Shift+i border pixel 5; mark --add "insertee"; mode "insert-hsplit";
 
 # Printscreen function
-bindsym --release $mod+p exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+bindsym --release $mod+p exec scrot '%Y%m%d%H%M-screen.png' -s -e 'mv $f ~/Desktop/'
+bindsym --release $mod+Shift+p exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 bindsym $mod+Ctrl+P exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 
 # Start i3bar to display a workspace bar (plus the system information i3status
