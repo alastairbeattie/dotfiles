@@ -7,3 +7,5 @@ PATH="$HOME/.local/bin:$PATH"
 
 # path for pip --user libraries
 PATH="$HOME/bin:$PATH"
+
+export HISTCONTROL=erasedups
