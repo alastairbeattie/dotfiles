@@ -41,7 +41,7 @@ set $right l
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec firefox
 bindsym $mod+Control+Return exec ssh -X magi firefox -no-remote -no-xshm
 # focus child
@@ -63,11 +63,10 @@ bindsym $mod+space exec dmenu_run -i
 # bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+$left [class=".*"] border pixel 0; focus left; border pixel 5
-bindsym $mod+$down [class=".*"] border pixel 0; focus down; border pixel 5
-bindsym $mod+$up [class=".*"] border pixel 0; focus up; border pixel 5
-bindsym $mod+$right [class=".*"] border pixel 0; focus right; border pixel 5
-
+bindsym $mod+$left border pixel 0; focus left; border pixel 1
+bindsym $mod+$down border pixel 0; focus down; border pixel 1
+bindsym $mod+$up border pixel 0; focus up; border pixel 1
+bindsym $mod+$right border pixel 0; focus right; border pixel 1
 
 # move focused window
 bindsym $mod+Shift+$left move left
@@ -75,14 +74,17 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
-#merge
-bindsym $mod+Alt+$left move left
-bindsym $mod+Alt+$down move down
-bindsym $mod+Alt+$up move up
-bindsym $mod+Mod1+$right focus right; split v; focus left; move right
-# split in horizontal orientatio
+# splits
 bindsym $mod+Shift+d split v
 bindsym $mod+d split h
+
+# marks
+bindsym $mod+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+bindsym $mod+g exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+
+#shift-tab
+bindsym $mod+Tab focus next sibling
+bindsym $mod+Shift+Tab focus prev sibling
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -160,13 +162,14 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 new_window 1pixel
-focus_follows_mouse yes
+focus_follows_mouse no
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+exec "while true; do if [[ $(cat /sys/class/power_supply/BAT0/capacity) -le 10 ]]; then i3-nagbar -t warning -m 'Battery under 10%'; fi; sleep 60; done;"
 # no borders at window edge
 hide_edge_borders both
 # resize without mode
@@ -204,10 +207,10 @@ bindsym $mod+r mode "resize"
 
 # gaps
 smart_gaps on
-gaps inner 20
+gaps inner 40
 gaps outer 0
-bindsym $mod+i gaps inner current plus 5
-bindsym $mod+o gaps inner current minus 5
+bindsym $mod+i gaps inner all plus 10
+bindsym $mod+o gaps inner all minus 10
 # /gaps
 mode "swap" {
 	# switch to workspace
@@ -258,21 +261,21 @@ mode "insert-hsplit" {
     bindsym $mod+9 workspace $ws9
     bindsym $mod+0 workspace $ws10
     # focus the parent container
-    bindsym $mod+a border pixel 1; focus parent; border pixel 5
+    bindsym $mod+a border pixel 0; focus parent; border pixel 5
 
     # focus the child container
-    bindsym $mod+z border pixel 1; focus child; border pixel 5
+    bindsym $mod+z border pixel 0; focus child; border pixel 5
 
     # change focus
-    bindsym $mod+h border pixel 1; focus left; border pixel 5
-    bindsym $mod+j border pixel 1; focus down; border pixel 5
-    bindsym $mod+k border pixel 1; focus up; border pixel 5
-    bindsym $mod+l border pixel 1; focus right; border pixel 5
+    bindsym h border pixel 1; focus left; border pixel 5
+    bindsym j border pixel 1; focus down; border pixel 5
+    bindsym k border pixel 1; focus up; border pixel 5
+    bindsym l border pixel 1; focus right; border pixel 5
 
     bindsym t mode "insert-tab"
     bindsym i mode "insert-vsplit"
 
-    bindsym Return split v; mark --add "target"; [con_mark="insertee"] focus; move container to mark "target"; [con_mark="insertee"] focus; unmark "target"; unmark "insertee"; mode "default";
+    bindsym Return border pixel 0; split v; mark --add "target"; [con_mark="insertee"] focus; move container to mark "target"; [con_mark="insertee"] focus; unmark "target"; unmark "insertee"; mode "default";
     bindsym Escape border pixel 1;  unmark "insertee"; mode "default"
 }
 mode "insert-vsplit" {
@@ -295,15 +298,15 @@ mode "insert-vsplit" {
     bindsym $mod+z border pixel 1; focus child; border pixel 5
 
     # change focus
-    bindsym $mod+h border pixel 1; focus left; border pixel 5
-    bindsym $mod+j border pixel 1; focus down; border pixel 5
-    bindsym $mod+k border pixel 1; focus up; border pixel 5
-    bindsym $mod+l border pixel 1; focus right; border pixel 5
+    bindsym h border pixel 1; focus left; border pixel 5
+    bindsym j border pixel 1; focus down; border pixel 5
+    bindsym k border pixel 1; focus up; border pixel 5
+    bindsym l border pixel 1; focus right; border pixel 5
 
     bindsym t mode "insert-tab"
     bindsym i mode "insert-hsplit"
 
-    bindsym Return split v; mark --add "target"; [con_mark="insertee"] focus; move container to mark "target"; [con_mark="insertee"] focus; unmark "target"; unmark "insertee"; mode "default";
+    bindsym Return border pixel 0; split h; mark --add "target"; [con_mark="insertee"] focus; move container to mark "target"; [con_mark="insertee"] focus; unmark "target"; unmark "insertee"; mode "default";
     bindsym Escape border pixel 1;  unmark "insertee"; mode "default"
 }
 mode "insert-tab" {
@@ -326,21 +329,21 @@ mode "insert-tab" {
     bindsym $mod+z border pixel 1; focus child; border pixel 5
 
     # change focus
-    bindsym $mod+h border pixel 1; focus left; border pixel 5
-    bindsym $mod+j border pixel 1; focus down; border pixel 5
-    bindsym $mod+k border pixel 1; focus up; border pixel 5
-    bindsym $mod+l border pixel 1; focus right; border pixel 5
+    bindsym h border pixel 0; focus left; border pixel 5
+    bindsym j border pixel 0; focus down; border pixel 5
+    bindsym k border pixel 0; focus up; border pixel 5
+    bindsym l border pixel 0; focus right; border pixel 5
 
     bindsym i mode "insert-vsplit"
 
-    bindsym Return split v; mark --add "target"; [con_mark="insertee"] focus; layout tabbed; move container to mark "target"; [con_mark="insertee"] focus; unmark "target"; unmark "insertee"; mode "default";
+    bindsym Return border pixel 0; split v; mark --add "target"; [con_mark="insertee"] focus; move container to mark "target"; [con_mark="insertee"] focus; layout tabbed; unmark "target"; unmark "insertee"; mode "default";
     bindsym Escape border pixel 1;  unmark "insertee"; mode "default"
 }
 
 bindsym $mod+Shift+i border pixel 5; mark --add "insertee"; mode "insert-hsplit";
 
 # Printscreen function
-bindsym $mod+p exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
+bindsym --release $mod+p exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f'
 bindsym $mod+Ctrl+P exec scrot -e 'mv $f /tmp/ && gimp /tmp/$f'
 
 # Start i3bar to display a workspace bar (plus the system information i3status
