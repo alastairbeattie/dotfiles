@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/alastair/projects/ast/src'
+let g:netrw_dirhist_5='/home/alastair/projects/ast'
+let g:netrw_dirhist_4='/home/alastair/projects/ast/src'
+let g:netrw_dirhist_3='/home/alastair/projects/ast'
+let g:netrw_dirhist_2='/home/alastair/projects/ast/src'
+let g:netrw_dirhist_1='/home/alastair/projects/ast'
