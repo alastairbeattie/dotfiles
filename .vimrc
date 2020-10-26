@@ -39,6 +39,7 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 
 set nocompatible              " be iMproved, required
 filetype on
+filetype plugin on
 colorscheme alastair
 syntax on
 set tabstop=4

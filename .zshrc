@@ -6,6 +6,8 @@
 # alias for dotfiles repository
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+## compnow costing
+alias cost="~/cost.py"
 abe_cpu_frequency() {
     sudo cpupower frequency-info -fm | egrep -o "[0-9i,\.]{3,5} [GM]Hz"
 }
@@ -39,7 +41,7 @@ fi
 bindkey -v # Enable vi mode
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
-SAVEHIST=100
+SAVEHIST=100000
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_all_dups
@@ -111,3 +113,6 @@ man() {
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx
 fi
+source /home/alastair/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^ ' autosuggest-accept
