@@ -63,6 +63,10 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h><C-h> :tabnext<CR>
 nnoremap <C-l><C-l> :tabprevious<CR>
 
+nnoremap <C-h><C-h> :bprevious<CR>
+nnoremap <C-l><C-l> :bnext<CR>
+nnoremap <Tab>h :tabprevious<CR>
+nnoremap <Tab>l :tabnext<CR>
 
 " number autoswitching
 :set number relativenumber
