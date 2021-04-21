@@ -8,4 +8,5 @@
 feh --bg-fill Desktop/background.jpg
 xset s 120 120
 xss-lock -n ~/screenlock.sh -- i3lock -i /tmp/screen.png&
+numlockx
 i3
