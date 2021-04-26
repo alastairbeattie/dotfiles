@@ -44,7 +44,9 @@ floating_modifier $mod
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec firefox
 bindsym $mod+Control+Return exec ssh -X magi firefox -no-remote -no-xshm
-bindsym $mod+Mod1+p exec wine start /unix ~/.wine/drive_c/Program\ Files\ \(x86\)/PRONTO/PROCLIENT/proclient.exe
+bindsym $mod+Mod1+p exec wine ~/.wine/drive_c/Program\ Files\ \(x86\)/PRONTO/PROCLIENT/proclient.exe
+bindsym $mod+Mod1+l exec loginctl lock-session
+bindsym $mod+Mod1+c exec kitty nvim ~/.config/i3/config
 # focus child
 
 bindsym $mod+Shift+q kill

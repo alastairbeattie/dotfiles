@@ -1,5 +1,6 @@
 #!/bin/sh
 
+<<<<<<< HEAD
 case $HOST in
     asuka)
         picom &
@@ -14,4 +15,9 @@ case $HOST in
 esac
 
 feh --bg-fill .config/background.jpg &
+#feh --bg-fill .config/background.jpg
+#feh --no-xinerama --bg-fill Downloads/jpg/milky-way-triple-monitor-wallpaper.jpg
+xset s 120 120
+xss-lock -n ~/screenlock.sh -- i3lock -i /tmp/screen.png&
+numlockx
 i3
