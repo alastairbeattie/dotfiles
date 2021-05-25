@@ -1,6 +1,5 @@
 #!/bin/sh
 
-<<<<<<< HEAD
 case $HOST in
     asuka)
         picom &
