@@ -1,0 +1,54 @@
+[submodule "/home/alastair/.local/share/nvim/site/pack/nerdtree/start/nerdtree"]
+	path = .local/share/nvim/site/pack/nerdtree/start/nerdtree
+	url = https://github.com/preservim/nerdtree
+[submodule ".local/share/nvim/site/pack/plugins/start/vim-polyglot"]
+	path = .local/share/nvim/site/pack/plugins/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/pack/plugins/start/rust.vim"]
+	path = .vim/pack/plugins/start/rust.vim
+	url = https://github.com/rust-lang/rust.vim
+[submodule ".vim/plugged/ale"]
+	path = .vim/plugged/ale
+	url = https://github.com/w0rp/ale.git
+[submodule ".vim/plugged/coc.nvim"]
+	path = .vim/plugged/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
+[submodule ".vim/plugged/elm-vim"]
+	path = .vim/plugged/elm-vim
+	url = https://github.com/elmcast/elm-vim.git
+[submodule ".vim/plugged/fzf.vim"]
+	path = .vim/plugged/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+[submodule ".vim/plugged/nerdtree"]
+	path = .vim/plugged/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/plugged/python-syntax"]
+	path = .vim/plugged/python-syntax
+	url = https://github.com/vim-python/python-syntax.git
+[submodule ".vim/plugged/typescript-vim"]
+	path = .vim/plugged/typescript-vim
+    url = https://github.com/leafgarland/typescript-vim.git
+[submodule ".vim/plugged/undotree"]
+	path = .vim/plugged/undotree
+    url = https://github.com/mbbill/undotree.git
+[submodule ".vim/plugged/vim-commentary"]
+	path = .vim/plugged/vim-commentary
+    url = https://github.com/tpope/vim-commentary.git
+[submodule ".vim/plugged/vim-elixir"]
+	path = .vim/plugged/vim-elixir
+    url = https://github.com/elixir-editors/vim-elixir.git
+[submodule ".vim/plugged/vim-polyglot"]
+	path = .vim/plugged/vim-polyglot
+    url = https://github.com/sheerun/vim-polyglot.git
+[submodule ".vim/plugged/vim-tsx"]
+	path = .vim/plugged/vim-tsx
+    url = https://github.com/ianks/vim-tsx.git
+[submodule ".zsh/zsh-autosuggestions"]
+	path = .zsh/zsh-autosuggestions
+    url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule ".zsh/zsh-syntax-highlighting"]
+	path = .zsh/zsh-syntax-highlighting
+    url = https://github.com/zsh-users/zsh-syntax-highlighting.git
