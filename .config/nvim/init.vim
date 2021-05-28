@@ -47,6 +47,8 @@ let mapleader = " "
 nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <C-space>b :map<CR>
 nnoremap <leader>z :FZF<CR>
+" Vimwiki keys
+
 " Dead
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>a :Ag<CR>

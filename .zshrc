@@ -5,7 +5,21 @@
 #### ALIASES ####
 # alias for dotfiles repository
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
+alias tj=vimwiki_today
+alias tasks='nvim ~/vimwiki/tasks.md'
+vimwiki_today() {
+    TODAY_FILE=~/vimwiki/Journal_$(date +%Y%m%d).md
+    if [ ! -f "$TODAY_FILE" ]; then
+        touch $TODAY_FILE
+        echo "### Notes ###" >> $TODAY_FILE
+    fi
+    nvim $TODAY_FILE
+}
+start_fakecam() {
+    sudo modprobe v4l2loopback;
+    node ~/src/Linux-Fake-Background-Webcam/bodypix/app.js &;
+    python3 ~/src/Linux-Fake-Background-Webcam/fakecam/fake.py -w /dev/video0 --fps 30 --no-foreground
+}
 ## compnow costing
 alias cost="~/cost.py"
 abe_cpu_frequency() {
@@ -85,12 +99,14 @@ alias dh='dirs -v'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias pacman='pacman --color auto'
+alias yay='yay --color auto'
 alias ip='ip -c'
 alias ls='ls --color=auto'
 alias restart='sudo systemctl restart'
 alias stop='sudo systemctl stop'
 alias start='sudo systemctl start'
 alias df='df -H'
+alias vim='nvim'
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
 export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
