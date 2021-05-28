@@ -17,8 +17,20 @@ set expandtab
 set number
 filetype indent on
 set autoindent
-set hlsearch
 set termguicolors
+set splitright
+set splitbelow
+
+"" Terminal
+tnoremap <Esc> <C-\><C-n>
+" start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+" open terminal on ctrl+n
+function! OpenTerminal()
+  split term://zsh
+  resize 10
+endfunction
+nnoremap <c-n> :call OpenTerminal()<CR>
 
 " Move lines with alt j/k
 nnoremap <A-j> :m .+1<CR>==
@@ -43,8 +55,17 @@ set shortmess+=c
 inoremap <silent><expr> <c-space> coc#refresh()
 "Leaders"
 let mapleader = " "
-"NERD Tree toggle
+"NERDo Tree toggle
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIgnore = []
+let g:NERDTreeStatusline = ''
+" Automaticaly close nvim if NERDTree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Toggle
 nnoremap <leader>e :NERDTreeToggle<CR>
+
+
 nnoremap <C-space>b :map<CR>
 nnoremap <leader>z :FZF<CR>
 " Vimwiki keys
